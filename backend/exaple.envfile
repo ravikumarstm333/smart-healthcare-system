@@ -1,0 +1,4 @@
+MONGO_URL="mongodb://localhost:27017/"
+DATABASE_NAME="smart_healthcare"
+JWT_SECRET_KEY="super_secret_healthcare_key"
+SMS_API_KEY="mock_twilio_api_key_12345"
