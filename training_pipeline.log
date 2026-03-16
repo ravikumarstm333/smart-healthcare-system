@@ -1,0 +1,104 @@
+2026-03-16 11:41:55,378 - __main__ - INFO - ==================================================
+2026-03-16 11:41:55,378 - __main__ - INFO - Starting Healthcare Risk Prediction Pipeline
+2026-03-16 11:41:55,379 - __main__ - INFO - ==================================================
+2026-03-16 11:41:55,379 - __main__ - INFO - Loading data from dataset/health_lifestyle_dataset.csv
+2026-03-16 11:41:55,381 - __main__ - ERROR - Pipeline failed: [Errno 2] No such file or directory: 'dataset/health_lifestyle_dataset.csv'
+Traceback (most recent call last):
+  File "C:\Users\RAVI\Desktop\smart-healthcare-system\backend\model_train.py", line 591, in run_pipeline
+    df = self.load_and_explore_data(data_path)
+  File "C:\Users\RAVI\Desktop\smart-healthcare-system\backend\model_train.py", line 102, in load_and_explore_data
+    df = pd.read_csv(filepath)
+  File "C:\Users\RAVI\AppData\Local\Programs\Python\Python313\Lib\site-packages\pandas\io\parsers\readers.py", line 873, in read_csv
+    return _read(filepath_or_buffer, kwds)
+  File "C:\Users\RAVI\AppData\Local\Programs\Python\Python313\Lib\site-packages\pandas\io\parsers\readers.py", line 300, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+  File "C:\Users\RAVI\AppData\Local\Programs\Python\Python313\Lib\site-packages\pandas\io\parsers\readers.py", line 1645, in __init__
+    self._engine = self._make_engine(f, self.engine)
+                   ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\RAVI\AppData\Local\Programs\Python\Python313\Lib\site-packages\pandas\io\parsers\readers.py", line 1904, in _make_engine
+    self.handles = get_handle(
+                   ~~~~~~~~~~^
+        f,
+        ^^
+    ...<6 lines>...
+        storage_options=self.options.get("storage_options", None),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\RAVI\AppData\Local\Programs\Python\Python313\Lib\site-packages\pandas\io\common.py", line 926, in get_handle
+    handle = open(
+        handle,
+    ...<3 lines>...
+        newline="",
+    )
+FileNotFoundError: [Errno 2] No such file or directory: 'dataset/health_lifestyle_dataset.csv'
+2026-03-16 11:47:15,687 - __main__ - INFO - ==================================================
+2026-03-16 11:47:15,687 - __main__ - INFO - Starting Healthcare Risk Prediction Pipeline
+2026-03-16 11:47:15,687 - __main__ - INFO - ==================================================
+2026-03-16 11:47:15,687 - __main__ - INFO - Loading data from backend/dataset/health_lifestyle_dataset.csv
+2026-03-16 11:47:15,813 - __main__ - INFO - Fixing column formatting...
+2026-03-16 11:47:16,210 - __main__ - INFO - Dataset shape: (100000, 16)
+2026-03-16 11:47:16,210 - __main__ - INFO - Columns: ['id', 'age', 'gender', 'bmi', 'daily_steps', 'sleep_hours', 'water_intake_l', 'calories_consumed', 'smoker', 'alcohol', 'resting_hr', 'systolic_bp', 'diastolic_bp', 'cholesterol', 'family_history', 'disease_risk']
+2026-03-16 11:47:16,212 - __main__ - INFO - Data types:
+id                   str
+age                  str
+gender               str
+bmi                  str
+daily_steps          str
+sleep_hours          str
+water_intake_l       str
+calories_consumed    str
+smoker               str
+alcohol              str
+resting_hr           str
+systolic_bp          str
+diastolic_bp         str
+cholesterol          str
+family_history       str
+disease_risk         str
+dtype: object
+2026-03-16 11:47:16,218 - __main__ - INFO - Missing values:
+id                   0
+age                  0
+gender               0
+bmi                  0
+daily_steps          0
+sleep_hours          0
+water_intake_l       0
+calories_consumed    0
+smoker               0
+alcohol              0
+resting_hr           0
+systolic_bp          0
+diastolic_bp         0
+cholesterol          0
+family_history       0
+disease_risk         0
+dtype: int64
+2026-03-16 11:47:16,234 - __main__ - INFO - Target distribution:
+disease_risk
+0    75179
+1    24821
+Name: count, dtype: int64
+2026-03-16 11:47:16,234 - __main__ - INFO - Starting data cleaning...
+2026-03-16 11:47:16,844 - __main__ - INFO - Handling missing values...
+2026-03-16 11:47:16,847 - __main__ - INFO - Handling outliers...
+2026-03-16 11:47:16,896 - __main__ - INFO - Found 20094 outliers in smoker
+2026-03-16 11:47:16,934 - __main__ - INFO - Creating derived features...
+2026-03-16 11:47:16,956 - __main__ - INFO - Encoding categorical variables...
+2026-03-16 11:47:17,123 - __main__ - INFO - Data cleaning completed. Final shape: (100000, 19)
+2026-03-16 11:47:17,124 - __main__ - INFO - Preparing features and target...
+2026-03-16 11:47:17,126 - __main__ - INFO - Features shape: (100000, 18)
+2026-03-16 11:47:17,134 - __main__ - INFO - Target distribution:
+disease_risk
+0    75179
+1    24821
+Name: count, dtype: int64
+2026-03-16 11:47:17,226 - __main__ - INFO - Handling class imbalance using smote...
+2026-03-16 11:47:20,606 - __main__ - INFO - Resampled data shape: (120286, 18)
+2026-03-16 11:47:20,611 - __main__ - INFO - New target distribution:
+disease_risk
+0    60143
+1    60143
+Name: count, dtype: int64
+2026-03-16 11:47:20,611 - __main__ - INFO - Performing feature selection using rfecv...

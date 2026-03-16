@@ -7,7 +7,7 @@ from datetime import datetime, timedelta
 from config.settings import JWT_SECRET_KEY, ALGORITHM
 
 router = APIRouter()
-pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
+pwd_context = CryptContext(schemes=["pbkdf2_sha256"], deprecated="auto")
 
 @router.post("/register")
 def register_user(user: User):

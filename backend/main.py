@@ -1,6 +1,8 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from routes import auth_routes, health_routes, appointment_routes
+from routes.auth_routes import router as auth_router
+from routes.health_routes import router as health_router
+from routes.appointment_routes import router as appointment_router
 
 app = FastAPI(
     title="Smart Healthcare Monitoring API",
@@ -18,9 +20,9 @@ app.add_middleware(
 )
 
 # Include Routers
-app.include_router(auth_routes.router, tags=["Authentication"])
-app.include_router(health_routes.router, tags=["Health Prediction"])
-app.include_router(appointment_routes.router, tags=["Appointments"])
+app.include_router(auth_router, tags=["Authentication"])
+app.include_router(health_router, tags=["Health Prediction"])
+app.include_router(appointment_router, tags=["Appointments"])
 
 @app.get("/", tags=["Health Check"])
 def home():

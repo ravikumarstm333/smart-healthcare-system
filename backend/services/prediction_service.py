@@ -13,9 +13,20 @@ feature_columns = [
 def predict_disease(data):
 
     df = pd.DataFrame([data])
-
     df = df[feature_columns]
 
-    prediction = model.predict(df)
+    # probability
+    probabilities = model.predict_proba(df)[0]
 
-    return int(prediction[0])
+    high_risk_percent = round(probabilities[1] * 100, 2)
+
+    # decision rule
+    if high_risk_percent <= 40:
+        recommendation = "Home Care Advice"
+    else:
+        recommendation = "Doctor Appointment Required"
+
+    return {
+        "risk_percent": high_risk_percent,
+        "recommendation": recommendation
+    }

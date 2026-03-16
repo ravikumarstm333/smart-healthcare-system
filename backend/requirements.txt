@@ -4,3 +4,9 @@ pandas
 joblib
 pymongo
 scikit-learn
+pandas
+numpy
+scikit-learn
+imbalanced-learn
+xgboost
+joblib
